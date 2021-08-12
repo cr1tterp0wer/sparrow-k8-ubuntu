@@ -1,0 +1,13 @@
+namespace: backend
+namePrefix: sparrow-
+nameSuffix: "-001"
+commonLabels:
+  app: ubuntu
+commonAnnotations:
+  distroVersion: "20.04:focal"
+resources: # References to configs in current dir
+- backend-namespace.yml
+- ubuntu.deployment.yml
+patchesStrategicMerge:
+#- increase-replicas.yml # Increases 'n' pods in replicaSet
+- set-memory.yml

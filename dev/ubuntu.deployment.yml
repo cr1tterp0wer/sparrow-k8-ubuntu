@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ubuntu
+  labels:
+    app: ubuntu
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ubuntu
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      namespace: sparrow-backend
+      labels:
+        app: ubuntu
+    spec:
+      containers:
+      - image: ubuntu:20.04
+        imagePullPolicy: Always
+        name: ubuntu
+        command: ["/bin/tail", "-f", "/dev/null"]
+        resources: {}
